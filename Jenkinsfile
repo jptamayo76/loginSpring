@@ -1,17 +1,19 @@
 pipeline {
     agent any
-
+    tools {
+       maven 'maven-3.9.2' 
+    }
     stages {
-        stage('Hello') {
+        stage('Git') {
             steps {
-                echo 'Hello World'
+                echo 'GIT stage'
                 git branch: 'main', credentialsId: 'SSH-KEY-admin-DESKTOP', url: 'https://github.com/jptamayo76/loginSpring.git'		
             }
         }
         stage('Maven') {
             steps {
                 echo 'Maven stage'
-                mvn package
+                sh 'mvn clean package'
             }
         }        
     }
