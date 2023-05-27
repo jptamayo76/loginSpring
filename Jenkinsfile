@@ -11,7 +11,7 @@ pipeline {
         stage('Maven') {
             steps {
                 echo 'Maven stage'
-                mvn clean package
+                mvn package
             }
         }        
     }
